@@ -27,8 +27,10 @@ def check_property(primes):
 
 candidates = []
 
-for i in range(1, 101):
-    if check_property(find_primes(i)):
+primes = find_primes(1000)
+
+for i in range(1, 1000):
+    if check_property(primes[:i]):
         candidates.append(i)
 
 print(candidates)
