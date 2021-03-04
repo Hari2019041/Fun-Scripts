@@ -1,15 +1,10 @@
 import random
 
-words = [
-    "typewriter",
-    "carpenter",
-    "dancer",
-    "printer",
-    "drilling",
-    "love",
-    "wolf",
-    "street"
-]
+words = []
+with open("dictionary.txt", "r") as file:
+    for word in file.readlines():
+        if len(word) >= 6 and len(word) <= 11:
+            words.append(word[0:-1].lower())
 
 
 def print_word(word, letters):
