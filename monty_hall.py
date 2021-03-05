@@ -23,12 +23,11 @@ temp = deepcopy(goat_doors)
 win = False
 
 for door in temp:
-	if door != no_chosen:
-		goat_doors.remove(door)
-		print("goat shown:", door)
-		break
+    if door != no_chosen:
+        goat_doors.remove(door)
+        print("goat shown:", door)
+        break
 
 print(goat_doors)
 
-print(no_chosen)	
-
+print(no_chosen)

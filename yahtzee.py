@@ -1,32 +1,26 @@
 from random import randint
 
-no_of_simulations = 100
+NO_OF_SIMULATIONS = 100
+NO_OF_DICE = 5
 
 
 def count_no_of_rolls():
     no_of_rolls = 0
 
+    ideal_rolls = [[i]*NO_OF_DICE for i in range(1, 7)]
+
     rolls = []
-
-    ideal_rolls = []
-
-    for i in range(1, 7):
-        ideal_rolls.append([i]*5)
-
     while rolls not in ideal_rolls:
         no_of_rolls += 1
-        rolls = [randint(1, 6), randint(1, 6), randint(1, 6), randint(1, 6), randint(1, 6)]
+        rolls = [randint(1, 6) for i in range(NO_OF_DICE)]
 
     return no_of_rolls
 
 
-tallies = []
 total = 0
-for i in range(no_of_simulations):
+for simulation in range(NO_OF_SIMULATIONS):
     count = count_no_of_rolls()
     total += count
-    tallies.append(count)
 
-average = total/no_of_simulations
-
+average = total/NO_OF_SIMULATIONS
 print(average)

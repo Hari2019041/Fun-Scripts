@@ -1,14 +1,14 @@
-N = 10**2
+N = 10**3
 
-squares = [int(i * i) for i in range(101)]
+SQUARES = [int(i * i) for i in range(N+1)]
 
 
 def is_possible(n):
-    if n in squares:
+    if n in SQUARES:
         return f"{n}"
 
-    for square in squares:
-        if n - square in squares:
+    for square in SQUARES:
+        if n - square in SQUARES:
             return f"{square} + {n-square}"
 
     return ""
@@ -22,3 +22,6 @@ for i in range(1, N + 1):
         impossible_squares.append(i)
     else:
         possible_squares[i] = is_possible(i)
+
+print(impossible_squares)
+print(possible_squares)

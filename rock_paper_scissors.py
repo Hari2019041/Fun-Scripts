@@ -22,7 +22,7 @@ def play_game():
     return -1 if throw2 == 1 else 1
 
 
-no_of_games = 10**6
+NO_OF_GAMES = 10**6
 
 results = {
     "Player 1": 0,
@@ -30,7 +30,7 @@ results = {
     "Draw": 0
 }
 
-for game in range(no_of_games):
+for game in range(NO_OF_GAMES):
     result = play_game()
     if result == 1:
         results["Player 1"] += 1
@@ -40,9 +40,9 @@ for game in range(no_of_games):
         results["Draw"] += 1
 
 proportions = {
-    "Player 1": results["Player 1"]/no_of_games,
-    "Draw": results["Draw"]/no_of_games,
-    "Player 2": results["Player 2"]/no_of_games
+    "Player 1": results["Player 1"]/NO_OF_GAMES,
+    "Draw": results["Draw"]/NO_OF_GAMES,
+    "Player 2": results["Player 2"]/NO_OF_GAMES
 }
 print(results)
 print(proportions)
