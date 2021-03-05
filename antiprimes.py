@@ -1,3 +1,9 @@
+"""
+    Antiprime is a number which has the the maximum number of factors
+    than every number less than it.
+    This program finds out the antiprimes.
+"""
+
 from math import sqrt
 
 
