@@ -1,32 +1,28 @@
-from random import shuffle, randint
-from copy import deepcopy
+from random import randint, shuffle
 
-no_of_prisoners = 100
-no_of_boxes_opened = 100
+NO_OF_SIMULATIONS = 1000
+NO_OF_PRISONERS = NO_OF_BOXES = 100
 
-prisoners = [False for i in range(no_of_prisoners)]
+boxes = [i for i in range(NO_OF_BOXES)]
 
+successes = 0
+for simulation in range(NO_OF_SIMULATIONS):
+    prisoners = [False for i in range(NO_OF_PRISONERS)]
+    shuffle(boxes)
 
-boxes = [i for i in range(no_of_prisoners)]
-shuffle(boxes)
+    for prisoner in range(NO_OF_PRISONERS):
+        counter = 0
+        box_searched = prisoner
+        while counter < NO_OF_BOXES//2 and boxes[box_searched] != prisoner:
+            box_searched = boxes[box_searched]
+            counter += 1
 
-for prisoner in range(no_of_prisoners):
-	box_no = 0
-	
-	temp = deepcopy(boxes)
+        if boxes[box_searched] == prisoner:
+            prisoners[prisoner] = True
 
-	print(prisoner, end = ":")
+    if prisoners == [True]*NO_OF_PRISONERS:
+        successes += 1
 
-	box_chosen = temp[randint]
-	while box_no < no_of_boxes_opened and box_chosen != prisoner:
-		print(box_chosen, end = " ")
-		box_chosen = randint(0, 99)
-		box_no += 1
+success_rate = successes/NO_OF_SIMULATIONS
 
-	print(box_chosen)
-
-	if box_chosen == prisoner:
-		prisoners[prisoner] = True
-
-print(prisoners)
-
+print(success_rate)
