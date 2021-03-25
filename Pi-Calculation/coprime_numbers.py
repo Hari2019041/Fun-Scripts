@@ -1,25 +1,23 @@
 from math import gcd, sqrt, pi
 from random import randint
 
-no_of_trials = 10**6
-range_of_numbers = 10**9
+NO_OF_TRIALS = 10**6
+RANGE_OF_NUMBERS = 10**9
 
 count = 0
-for i in range(no_of_trials):
-	a = randint(1, range_of_numbers+1)
-	b = randint(1, range_of_numbers+1)
-	if gcd(a,b) == 1:
-		count +=1;
+for i in range(NO_OF_TRIALS):
+    a = randint(1, RANGE_OF_NUMBERS + 1)
+    b = randint(1, RANGE_OF_NUMBERS + 1)
+    count += 1 if gcd(a, b) == 1 else count
 
-probability = count/no_of_trials
+probability = count / NO_OF_TRIALS
 
-pi_estimate = sqrt(6/probability)
+pi_estimate = sqrt(6 / probability)
 
-absolute_error = abs(pi - pi_estimate) 
-relative_error = absolute_error/pi
-percentage_error = relative_error*100
+absolute_error = abs(pi - pi_estimate)
+relative_error = absolute_error / pi
+percentage_error = relative_error * 100
 
 print("PI ESTIMATE:", pi_estimate)
-
 print("ABSOLUTE ERROR:", absolute_error)
 print("PERCENTAGE ERROR:", percentage_error, "%")

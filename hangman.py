@@ -1,7 +1,7 @@
-import random
+from random import choice
 
-words = []
-with open("dictionary.txt", "r") as file:
+words = {}
+with open('dictionary.txt', 'r') as file:
     for word in file.readlines():
         if len(word) >= 6 and len(word) <= 11:
             words.append(word[0:-1].lower())
@@ -9,33 +9,29 @@ with open("dictionary.txt", "r") as file:
 
 def print_word(word, letters):
     for letter in word:
-        if letter in letters:
-            print("_ ", end="")
-        else:
-            print(letter, end=" ")
+        print('_ ', end='') if letter in letters else print(letter, end=' ')
     print()
 
 
 def play_game():
-    word = random.choice(words)
+    word = choice(words)
 
     letters = []
 
     for letter in word:
-        if letter not in letters:
-            letters.append(letter)
+        letters.append(letter) if letter not in letters else ''
 
-    max_tries = 5
+    MAX_TRIES = 5
     tries = 0
 
-    while len(letters) != 0 and tries < max_tries:
+    while len(letters) != 0 and tries < MAX_TRIES:
         print_word(word, letters)
         guess = input()
         if guess in letters:
             letters.remove(guess)
         else:
             tries += 1
-        print("Failed Tries:", tries)
+        print('Failed Tries:', tries)
 
     print(word)
 

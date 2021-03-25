@@ -19,7 +19,7 @@ def simulation(SIZE_OF_POND):
     pos = 0
 
     while (pos != SIZE_OF_POND):
-        jump = randint(1, SIZE_OF_POND-pos)
+        jump = randint(1, SIZE_OF_POND - pos)
         pos += jump
         steps += 1
 
@@ -29,5 +29,5 @@ def simulation(SIZE_OF_POND):
 for i in range(NO_OF_SIMULATIONS):
     simulation(SIZE_OF_POND)
 
-average = sum(no_of_steps_list)/NO_OF_SIMULATIONS
+average = sum(no_of_steps_list) / NO_OF_SIMULATIONS
 print(average)

@@ -1,9 +1,9 @@
-import random
+from random import randint
 
 
 class Player:
     def __init__(self):
-        self.throw = random.randint(1, 3)
+        self.throw = randint(1, 3)
 
 
 def play_game():
@@ -40,9 +40,9 @@ for game in range(NO_OF_GAMES):
         results["Draw"] += 1
 
 proportions = {
-    "Player 1": results["Player 1"]/NO_OF_GAMES,
-    "Draw": results["Draw"]/NO_OF_GAMES,
-    "Player 2": results["Player 2"]/NO_OF_GAMES
+    "Player 1": results["Player 1"] / NO_OF_GAMES,
+    "Draw": results["Draw"] / NO_OF_GAMES,
+    "Player 2": results["Player 2"] / NO_OF_GAMES
 }
 print(results)
 print(proportions)
