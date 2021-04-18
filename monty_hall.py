@@ -1,33 +1,42 @@
-from random import randint, shuffle
-from copy import deepcopy
+from random import shuffle, randint
 
-no_of_simulations = 10**5
+NO_OF_SIMULATIONS = 10**6
+NO_OF_DOORS = 3
+GOAT = 0
+CAR = 1
 
-no_of_doors = 10
-doors = [0 for i in range(no_of_doors - 1)]
+doors = [0]*(NO_OF_DOORS-1)
 doors.append(1)
 
-shuffle(doors)
-car_door = doors.index(1)
+winning_car = 0
+winning_goat = 0
 
-print(doors)
+def always_switch_strategy():
+    shuffle(doors)
 
-goat_doors = [door for door in range(no_of_doors) if doors[door] == 0]
-no_chosen = randint(0, no_of_doors - 1)
+    car = doors.index(1)
+    goats = [i for i in range(NO_OF_DOORS) if i != car]
 
-print("no chosen :", no_chosen)
-print("goat doors :", goat_doors)
+    person_choice = randint(0, NO_OF_DOORS-1)
 
-temp = deepcopy(goat_doors)
+    doors_opened = [False for door in doors]
+    if person_choice == car:
+        for i in range(NO_OF_DOORS):
+            doors_opened[i] = True if i in goats[:len(goats)-1] else False
+        person_choice = [i for i in range(NO_OF_DOORS) if i != car and doors_opened[i] == False][0]
+    else:
+        for i in range(NO_OF_DOORS):
+            doors_opened[i] = True if i != car and i != person_choice else False
+        person_choice = [i for i in range(NO_OF_DOORS) if i != person_choice and doors_opened[i] == False][0]
+    return 1 if person_choice == car else 0
 
-win = False
+for simulation in range(NO_OF_SIMULATIONS):
+    award = always_switch_strategy()
+    winning_car += 1 if award == CAR else 0
+    winning_goat += 1 if award == GOAT else 0
 
-for door in temp:
-    if door != no_chosen:
-        goat_doors.remove(door)
-        print("goat shown:", door)
-        break
 
-print(goat_doors)
-
-print(no_chosen)
+probability_of_car = (winning_car/NO_OF_SIMULATIONS)*100
+probability_of_goat = (winning_goat/NO_OF_SIMULATIONS)*100
+print("WINNING A CAR:", str(probability_of_car) + "%")
+print("WINNING A GOAT:", str(probability_of_goat) + "%")
