@@ -28,9 +28,9 @@ def find_path(i):
         paths[i - 1] += str(int(no)) + '->'
 
         no = no / 2 if no % 2 == 0 else (3 * no + 1) / 2
-        steps += 1 if no % 2 == 0 else steps + 2
+        steps += 1 if no % 2 == 0 else 2
 
-    paths[i - 1] += '1' if paths[i - 1][-1] != '1' else paths[i - 1]
+    paths[i - 1] += '1' if paths[i - 1][-1] != '1' else ''
 
     list_of_steps.append(steps)
 
