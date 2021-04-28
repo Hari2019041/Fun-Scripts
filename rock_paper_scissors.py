@@ -17,7 +17,7 @@ def play_game():
         return 0
     if throw1 == 1:
         return 1 if throw2 == 2 else -1
-    elif throw1 == 2:
+    if throw1 == 2:
         return -1 if throw2 == 1 else 1
     return -1 if throw2 == 1 else 1
 
@@ -32,12 +32,9 @@ results = {
 
 for game in range(NO_OF_GAMES):
     result = play_game()
-    if result == 1:
-        results["Player 1"] += 1
-    elif result == -1:
-        results["Player 2"] += 1
-    else:
-        results["Draw"] += 1
+    results["Player 1"] += 1 if result == 1 else 0
+    results["Player 2"] += 1 if result == -1 else 0
+    results["Draw"] += 1 if result == 0 else 0
 
 proportions = {
     "Player 1": results["Player 1"] / NO_OF_GAMES,

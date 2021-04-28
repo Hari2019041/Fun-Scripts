@@ -1,6 +1,6 @@
 from random import shuffle
 
-NO_OF_SIMULATIONS = 10000
+NO_OF_SIMULATIONS = 10**4
 NO_OF_PRISONERS = NO_OF_BOXES = 100
 
 boxes = [i for i in range(NO_OF_BOXES)]
@@ -23,5 +23,4 @@ for simulation in range(NO_OF_SIMULATIONS):
 
 
 success_rate = successes / NO_OF_SIMULATIONS
-
 print(success_rate)
