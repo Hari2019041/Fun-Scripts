@@ -8,13 +8,12 @@ from math import sqrt
 
 
 def find_no_of_factors(N):
-    factors = []
-
+    no_of_factors = 0
     for i in range(1, int(sqrt(N) + 1)):
         if N % i == 0:
-            factors.append(i) if N / i == i else factors.append([i, N // i])
+            no_of_factors += 1 if N / i == i else 2
 
-    return len(factors)
+    return no_of_factors
 
 
 N = 10**5
@@ -24,8 +23,9 @@ current_antiprime = 0
 list_of_antiprimes = []
 
 for i in range(1, N + 1):
-    if find_no_of_factors(i) > max_no_of_factors[-1]:
-        max_no_of_factors.append(find_no_of_factors(i))
+    no_of_factors = find_no_of_factors(i)
+    if no_of_factors > max_no_of_factors[-1]:
+        max_no_of_factors.append(no_of_factors)
         current_antiprime = i
         list_of_antiprimes.append(i)
 
