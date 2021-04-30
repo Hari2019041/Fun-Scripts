@@ -46,10 +46,10 @@ def main():
         for i in range(NO_OF_POINTS):
             point = (randint(2, WIDTH - 1), randint(2, HEIGHT - 30 - 1))
             if distance(point)**0.5 >= RADIUS:
-                pygame.draw.circle(SCREEN, RED, point, 0)
+                pygame.draw.circle(SCREEN, RED, point, 1)
             else:
                 inside_circle += 1
-                pygame.draw.circle(SCREEN, GREEN, point, 0)
+                pygame.draw.circle(SCREEN, GREEN, point, 1)
         total_points += NO_OF_POINTS
 
         pygame.draw.rect(SCREEN, WHITE, (0, HEIGHT - 30, WIDTH, 30))
