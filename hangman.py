@@ -1,10 +1,10 @@
 from random import choice
 
-words = {}
+words = set()
 with open('dictionary.txt', 'r') as file:
     for word in file.readlines():
         if len(word) >= 6 and len(word) <= 11:
-            words.append(word[0:-1].lower())
+            words.add(word[0:-1].lower())
 
 
 def print_word(word, letters):
@@ -14,7 +14,7 @@ def print_word(word, letters):
 
 
 def play_game():
-    word = choice(words)
+    word = choice(list(words))
 
     letters = []
 
